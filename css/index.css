@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #434242;
+  font-family: "Pacifico", cursive;
+}
+
+.box {
+  position: relative;
+  height: 200px;
+  transform-style: preserve-3d;
+  -webkit-animation: animate 16s linear infinite;
+          animation: animate 16s linear infinite;
+}
+.box div {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.box div.block span {
+  position: absolute;
+  width: 200px;
+  left: calc(50% - 100px);
+  height: 100px;
+  background-color: #222222;
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  transition: 0.5s;
+}
+.box div.text span {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+  cursor: pointer;
+  color: #fff;
+  font-size: 4em;
+  text-transform: uppercase;
+  z-index: 10;
+  line-height: 1em;
+  -webkit-text-stroke: 3px #000;
+  transform-style: preserve-3d;
+}
+.box div.text span:nth-child(1) {
+  font-size: 3em;
+}
+.box div.text span::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 7px;
+  transform-origin: bottom;
+  transform: rotateX(-90deg);
+  color: rgba(0, 0, 0, 0.1);
+  -webkit-text-stroke: 0px #000;
+  filter: blur(5px);
+}
+.box div.text span::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  top: 100px;
+  height: 60px;
+  background-color: #222222;
+  transform: rotateX(-90deg);
+  transition: 0.5s;
+}
+.box:hover div.block span {
+  background-color: #5BC0F8;
+  filter: drop-shadow(0 0 50px #5BC0F8);
+}
+.box:hover div.text span::after {
+  background-color: #5BC0F8;
+  filter: drop-shadow(0 0 50px #5BC0F8);
+}
+
+@-webkit-keyframes animate {
+  0% {
+    transform: rotateX(-20deg) rotateY(360deg);
+  }
+  100% {
+    transform: rotateX(-20deg) rotateY(0deg);
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateX(-20deg) rotateY(360deg);
+  }
+  100% {
+    transform: rotateX(-20deg) rotateY(0deg);
+  }
+}/*# sourceMappingURL=index.css.map */
